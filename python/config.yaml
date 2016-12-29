@@ -1,0 +1,7 @@
+#access_token: EAASBZCX9UowUBAMYeM5BwlZAZCsoZAzGffTQZAQRj73YvdwyEPOWqRAlt8WruZCc3LkKjnjPxJrkp2wSoIVdPZA6TEsTZCsI8QM8ZB0IV1hlm1x4ZASXtSDp2IQQyAFZCozrsOnDVbG4JZC1lbgcUwcZB4BKYeM8lBJlMml1v1V8FdjNuZAvxB8xH02ZC3VCtNnx4PdQIoZD
+access_token: 1268825669804805|BrbYe15hAO5ZZjxqtvYU0M7h3c8
+url_qd: https://graph.facebook.com/v2.8/search?since=%s&limit=500&fields=events{type,attending_count,description,name,start_time,end_time,place,picture}&q=%s&type=%s&center=%f,%f&distance=%d&access_token=%s
+url_q: https://graph.facebook.com/v2.8/search?since=%s&limit=500&fields=events{type,attending_count,description,name,start_time,end_time,place,picture}&q=%s&type=%s&center=%f,%f&access_token=%s
+url_d: https://graph.facebook.com/v2.8/search?since=%s&limit=500&fields=events{type,attending_count,description,name,start_time,end_time,place,picture}&type=%s&center=%f,%f&distance=%d&access_token=%s
+url_ll: https://graph.facebook.com/v2.8/search?since=%s&limit=500&fields=events{type,attending_count,description,name,start_time,end_time,place,picture}&type=%s&center=%f,%f&access_token=%s
+url: https://graph.facebook.com/v2.8/search?since=%s&limit=300fields=events{type,attending_count,description,name,start_time,end_time,place}&q=%s&type=%s&access_token=%s

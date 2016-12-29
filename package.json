@@ -1,0 +1,40 @@
+{
+  "name": "whido-api",
+  "version": "1.0.0",
+  "description": "\"proyecto api whido\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/poskinx/whido-api.git"
+  },
+  "keywords": [
+    "whido"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/poskinx/whido-api/issues"
+  },
+  "homepage": "https://github.com/poskinx/whido-api#readme",
+  "dependencies": {
+    "@google/maps": "^0.3.0",
+    "async": "^2.1.4",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.15.1",
+    "config": "^1.21.0",
+    "cors": "^2.7.1",
+    "express": "^4.13.4",
+    "firebase": "^3.4.1",
+    "firebase-auto-ids": "^1.1.0",
+    "firebase-token-generator": "^2.0.0",
+    "geolib": "^2.0.22",
+    "jwt-simple": "^0.5.0",
+    "mathjs": "^3.7.0",
+    "morgan": "^1.7.0",
+    "nodemon": "^1.11.0",
+    "requestify": "^0.2.5"
+  }
+}

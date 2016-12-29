@@ -1,0 +1,170 @@
+
+....................... E V E N T S ..............................................
+<a href="hi"></a>
+
+	POST : http://localhost:3090/getEvents  --> to get all the events
+
+	{
+        "profileArray":   [1, -1, 0, 1, -1, 0, 1, -1, 0, 1, -1, 0, 1, -1, 0, 1, -1, 0, 1, -1, 0, 1, -1, 0],  // si vols que s'asembli al user , sino []
+        "similarityFactor": 0.9, // sino 0
+        "latitude": "41.3851739",
+        "longitude": "2.165188",
+        "category":"NightLife", // si vols filtrar per categoria, sino ""
+        "searchingDistance": "300"
+    }
+
+	POST: http://localhost:3090/addEvent --> to add an event
+
+        BODY:  {
+                  "id": only for facebook events
+                	"title":"PLAY PARCHIS",
+                  "latitud":"41.868",
+                 	"longitud":"4.865",
+                 	"type":"facebook / whido",
+                 	"category": "roll-play",
+                 	"place": "CAMPUS NORD",
+                 	"time":"15:30h",
+                 	"description":"EL MEJOR EVENTO DEL AÑO!",
+                 	"usersIn":[]
+                }
+
+
+	GET:  http://localhost:3090/getEvent/:id --> to get a single event (id)
+
+	POST:  http://localhost:3090/updateEvent/:id  --> to update a single event (id)
+
+          BODY: {...ANY CAMP...}
+
+	POST: http://localhost:3090/removeEvent/:id  --> remove a single event  (id)
+
+	GET: http://localhost:3090/getUsersfromEvent/:id --> to get the users that had joined an event (id)
+
+  POST:  http://localhost:3090/leaveEvent/:id  --> to leave an event (id)
+
+          BODY: {idUser}
+
+	POST: http://localhost:3090/joinEvent/:id --> join an event (id)
+
+          BODY: {idUser}
+
+  GET:   http://localhost:3090/getEventByTitle?title=xxx --> instead of xxx put the title of the event you want to find
+
+
+  ................................... P R I V A T E    E V E N T S ..............................................
+
+	POST:  http://localhost:3090/addPrivateEvent
+
+					BODY: {
+									"idUser": 2,
+									"event" : {
+
+									},
+									"isPrivate": true (or false)
+								}
+
+	POST:  http://localhost:3090/leavePrivateEvent/:id --> leave an event (id)
+
+					BODY: {idUser}
+
+  ................................... U S E R S ..............................................
+
+	GET: http://localhost:3090/getUsers
+
+	POST: http://localhost:3090/addUser
+
+          BODY: {
+                  "id": 24,
+                	"token": "",
+                	"idAvatar": 12,
+                	"name": "Oscar",
+                	"surname": "del Alamo",
+                	"Nik":"poskinx",
+                	"position": {"lng":"2.99","lat":"26.3974123"},
+                	"direction": "C/Mallorca, 107"
+                 }
+
+	GET: http://localhost:3090/getUser/:id	--> i.e: http://localhost:3090/getUser/24
+
+	POST: http://localhost:3090/updateUser/:id
+	--> si li afegeixes un camp al body, tot i que no estigui a la BBDD, te l'afegirà igualment com a nou camp
+	--> i.e:
+					BODY: {
+									"direction": "new_direction"
+								 }
+
+	POST: http://localhost:3090/removeUser/:id
+
+	GET: http://localhost:3090/getEventsOfUser/:id  --> return all the events which user had joined
+
+	GET: http://localhost:3090/getPrivateEventsOfUser/:id  --> return all the PRIVATE events which user is in
+
+	GET: http://localhost:3090/getPastEvents/:id --> return all the past events (groups) of a user(id)
+
+
+	................................ R E C O M M E N D E R ..............................................
+
+	POST : http://localhost:3090/createProfileUser
+	--> Funció que es crida el primer cop que l'usuari fa login i tria el seu avatar i el seu perfil.
+			Crea un vector profileArray de dimensió 24 de l'usuari a partir de les puntuacions de les 8 categories generals
+
+					BODY: {
+								  "createProfileUser": {
+								      "NightLife": "-2",
+								      "Culture":"1",
+								      "FoodDrinks":"0",
+								      "Sports":"2",
+								      "EducationTraining":"1",
+								      "Purchases":"0",
+								      "Music":"-1",
+								      "Others":"2"
+								  },
+
+								  "idUser": "2"
+								}
+
+	POST : http://localhost:3090/rateEvent
+	--> Funció que s'hauria de cridar quan l'usuari fa la valoració d'un event.
+			En funció de la puntuació donada, es crida actualizeProfileArrayUser amb uns paràmetres
+			També s'encarrega de transformar un event a group (eventToGroup.js) si el event encara no és group.
+
+					BODY: {
+								  "rating": 4,
+									"idEvent": 1,
+								  "idUser": "2"
+								}
+
+	POST : http://localhost:3090/likeEvent
+	--> Funció que s'hauria de crida quan un usuari li dóna like a un event.
+	Utilitza el controller likeEvent (principalment actualitzar tant el vector del usuari com el del event)
+
+					BODY: {
+									"idEvent": 1,
+								  "idUser": "2"
+								}
+
+	POST : http://localhost:3090/dislikeEvent
+	--> Funció que s'hauria de cridar quan un usuari li dóna dislike a un event.
+	if (el vector del evento és tot zeros) then l'actualitza a l'invers del usuari: newVectorEvento = -vectorUser.
+			else: newVectorEvento = vectorEvento + (vectorUser*-0.5)
+
+					BODY: {
+									"idEvent": 1,
+								  "idUser": "2"
+								}
+
+=======
+
+	GET: http://localhost:3090/default_values
+
+  .................................... U T I L S ..............................................
+
+	POST: http://localhost:3090/geoLocate  --> enter an address and you will receive the coordinates
+
+        BODY: {
+              	"address": "1600 Amphitheatre Parkway, Mountain View, CA"
+              }
+
+  ................................ C A T E G O R I E S ..............................................
+
+
+	POST: http://localhost:3090/addCategory

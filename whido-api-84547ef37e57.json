@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "whido-api",
+  "private_key_id": "84547ef37e570250308dd662531c043f298dfc25",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQD3Tl/Idgv0KLOO\ntZsjvmZ5pc5EdkcPNvXKLVcNhnY1w/G4GYR4GmYNCoKl7jTuQQnKOdAlqSZpBdWP\niPx0ovvLVx29LPaTUkKx2V0X1D0j3oB+m5WQ3UKE4Jbr7U7INW80EW8kqDBrtETC\nDkJE1dzQhp/9v3bTQP9TaD2Tc0RMDJ8e+9hLQIE3EZQdn56aKbVQbXI5oPVaHDqF\nNfFp8HormrcdNGX+7a64WSF2N/tQEQs2G5yTsb9V2DPTfd9792I1wacz22TwBgy1\nLStyUtNclyHgI/YmoYTf67Grm6kGhKM+nQgZv0e8D5CDyoVQI2Klu/nUqvORt0U2\nm406EOe7AgMBAAECggEAXzLgVD5844Q3epwWGHBW6kUVXe1Z9VVm0Gkbta0pHBFN\nn1zTTZh76FE/cbh8z6phpmMS6SxwCMWiLBrDc/K5ktD6NbR1RsjHu8a8u0uMLZ6d\nQB+MN7O0w4nhDvjO9ur638RGUIod+ZfvT/RFNlJNKkholjl5+GBw6R6bdYNNqyf+\n7GruVUYm1/z2y94ws3nOJHvssdEvpCa6u/S+t9gNc2gxnbib/3ifL8H7jrgYxyj9\nPa/n5ot2GllL0q7AQVzcHnR7q/XTBykcdQLGb112wrGcBFg/uqT7NbKDRmqR9KYR\nQIbLsBbaJrDKCWjoxJqOIgHoIha58ahRTcBbfPYI4QKBgQD/ErdVM+MBvHvyQXZ3\n1QDaSBHK7OLW5jzfJu20KClH6CM2U1CHWE26EyZ58EL3rrVXWDJYIV/0UEAyTVt3\nIiC31Sl1xjLph2HIOJTZhdMsCuWduC8LdTPWG43wBVKtNbGzYKq+se1UHP+QUOmU\n0rtMFBkZ5rHeiuyx/beJYVyG9wKBgQD4NG7HXHwZ+4pR7iHMhabUeXX7/jkM/EVU\ncNZGyiG9NT5iAIrB8/uUmx6misAMsHrz4/KL3Bphod7k8u358gn/IsUlIAkD0jbh\nwC9R3IxBZX9cPIh1w9lZQflolgfK6bSOdzaOgDBXQPIJwXDZTDf2IcUxJl0ivfNB\nsmZWG9MgXQKBgEJUCZx8W6GN8+UxJK9QkmIwr3/HTc14HYghxVo9v05VjSKJU71+\nNugWJsE6uw9RPRKzepP0SdFsNOVfvFMkasGjCp73pTGY5NJ99CcEZ79iLgdvZ7xh\nA9O/Yo9xsugbuFPe5UelWQOwbryGbdcnXVERQN29Ya9vDNHUGi/9Q2RNAoGBANAP\nW+GAlINPSabeYLTKQIwR+SYw+G/7NL7RC74xiNDLxixu2eI1/OmYkrv2yYCZm6fA\nqDw3WGIJSAhR381K6LhX1D0HuqbaW6kn6kLMB0J2q6mNELLvZs4csM7MHWIqQHHA\nWxpfOKabyYkF/+wXqT2JF3zY9O+/nR+wRXrfPj79AoGAXC88pOg4iTQ6uD+6Vc8T\nQ149cti1+bswcuXBheFOVDTEAG7jNPW28BMnMefSQ6NNLlDKxKq6rczsAVnIIUGm\nrKhu7S6KGoNANzJtde+upJVi8rABgfzlAcED7rdzU+zYN8KuF/MaPvEoavdtmZQP\nWbCPBmI6L7DdUJWKBPjanWg=\n-----END PRIVATE KEY-----\n",
+  "client_email": "whido-api@whido-api.iam.gserviceaccount.com",
+  "client_id": "106250180660748784454",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/whido-api%40whido-api.iam.gserviceaccount.com"
+}
