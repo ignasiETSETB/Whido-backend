@@ -2,8 +2,8 @@ const jwt = require('jwt-simple');
 const googleMapsClient = require('@google/maps');
 const index = require('../services/index');
 const db = index.db;
-const users= db.child('users');
-const events= db.child('events');
+//const users= db.child('users');
+//const events= db.child('events');
 
 exports.validateUser = function(idValidate, callback) {
   let exists = false;

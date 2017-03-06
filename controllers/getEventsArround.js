@@ -4,8 +4,8 @@ const firebase = require('firebase');
 const requestify = require('requestify');
 const index = require('../services/index');
 const db = index.db;
-const events = db.child('events');
-const privateEvents= db.child('privateEvents');
+//const events = db.child('events');
+//const privateEvents= db.child('privateEvents');
 const ModuleNearby= require('./getNearbyEvents');
 const ModuleKNN = require('../recommender/knnAlgorithm');
 const ModuleCategory = require('../services/categories');
@@ -13,11 +13,11 @@ var async = require('async');
 
 
 
-exports.getEventsArround = function(latitude,longitude,searchingDistance,similarityFactor,profileArray,category,callback) {
+exports.getEventsArround = function(latitude,longitude,callback) {
 
 var location = { latitude, longitude };
 
-requestify.get('https://whido-api.firebaseio.com/events.json').then(function(response) {
+requestify.get('https://whido-api-master.firebaseio.com/newEvents.json').then(function(response) {
   // Get the response body
   let eventsBBDD = response.getBody();
 

@@ -3,8 +3,8 @@ const extend = require('util')._extend;
 const firebase = require('firebase');
 const index = require('../services/index');
 const db = index.db;
-const users= db.child('users');
-const events= db.child('events');
+//const users= db.child('users');
+//const events= db.child('events');
 
 exports.getUsersfromEvent = function(idEvent,usersBBDD,callback) {
 

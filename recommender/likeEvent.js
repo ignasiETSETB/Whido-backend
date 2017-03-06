@@ -2,8 +2,8 @@ const jwt = require('jwt-simple');
 const firebase = require('firebase');
 const index = require('../services/index');
 const db = index.db;
-const events = db.child('events');
-const users = db.child('users');
+//const events = db.child('events');
+//const users = db.child('users');
 const math = require('mathjs');
 const ModuleLike = require('../controllers/likeEvent');
 

@@ -1,13 +1,13 @@
 const firebase = require('firebase');
 const googleMapsClient = require('@google/maps');
+var admin = require("firebase-admin");
 
-const conf = {
-  databaseURL: "https://whido-api.firebaseio.com/",
-//  databaseURL: "https://fir-experiment-23653.firebaseio.com/",
-};
+var serviceAccount = require("whido-api-master-firebase-adminsdk-9658k-c66df90ff8.json");
 
-firebase.initializeApp(conf);
-exports.db = firebase.database().ref('/'); //db
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://whido-api-master.firebaseio.com"
+});
 
 
 exports.coordinatesApi = googleMapsClient.createClient({

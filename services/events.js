@@ -3,8 +3,8 @@ const firebase = require('firebase');
 var async = require('async');
 const index = require('./index');
 const db = index.db;
-const events = db.child('events');
-const users = db.child('users');
+//const events = db.child('events');
+//const users = db.child('users');
 const ModuleUsers = require('../controllers/getUsersfromEvent');
 const ModuleGetUsersIn = require('../controllers/getUsersIn');
 const ModuleValidate = require('../controllers/validate');
@@ -15,51 +15,50 @@ const ModuleEventIsOver = require('../controllers/eventIsOver.js');
 const ModuleIsGroup = require('../controllers/isGroup.js');
 const ModuleGroup = require('../controllers/eventToGroup');
 const requestify = require('requestify');
+var admin = require("firebase-admin");
+
+exports.getEventsArround = function (req, res, next) {
+
+	var params = req.query;
+  var latitude = params.latitude;
+  var longitude = params.longitude;
+  var searchingDistance = params.distance;
+	
+	var db = admin.database();
+	var ref = db.ref("newEvents");
+	var eventsList = []
+	ref.on("child_added", function(snapshot, prevChildKey) {
+		if(Math.abs(parseFloat(snapshot.val().latitude)-parseFloat(latitude) < parseFloat('0,0001817'))) {
+			if(Math.abs(parseFloat(snapshot.val().longitude)-parseFloat(longitude) < parseFloat('0,0001817'))) {
+				eventsList.push(snapshot.val());
+			}
+		}
+		
+		//res.json(snapshot);
+	}, function (errorObject) {
+		console.log("The read failed: " + errorObject.code);
+	});
+	res.json(eventsList);
+
+};
 
 
 exports.getEvents = function (req, res, next) {
 
-  var latitude = req.body.latitude;
-  var longitude = req.body.longitude;
-  var searchingDistance = req.body.searchingDistance;
-  var profileArray = req.body.profileArray;
-  var similarityFactor = req.body.similarityFactor;
-  var category = req.body.category;
+var db = admin.database();
+var ref = db.ref("newEvents");
+var eventsList = []
+ref.on("child_added", function(snapshot, prevChildKey) {
+	
+	eventsList.push(snapshot.val());
+
+}, function (errorObject) {
+  console.log("The read failed: " + errorObject.code);
+});
+res.json(eventsList);
 
 
-  ModuleEvents.getEventsArround(latitude,longitude,searchingDistance,similarityFactor,profileArray,category,(eventsBBDD)=>{
-    var eventsValids = [];
-    let groups = 0;
-    async.series([
-      function(callback){
-        eventsBBDD.map((event,i)=>{
-          eventsValids.push(event);
-          if(i == eventsBBDD.length-1){
-            callback(eventsValids);
-            }
-      });
-    },
-  ], function(err,eo) {
-      res.json(eventsValids);
-  });
- });
-}
-
-//
-// exports.getEvents = function (req, res, next) {
-//
-//   var latitude = req.body.latitude;
-//   var longitude = req.body.longitude;
-//   var searchingDistance = req.body.searchingDistance;
-//   var profileArray = req.body.profileArray;
-//   var similarityFactor = req.body.similarityFactor;
-//   var category = req.body.category;
-//
-//   requestify.get(`https://whido-api.firebaseio.com/events.json`).then(function(response) {
-// 			res.json(response.getBody());
-// 	});
-//
-// };
+};
 exports.addEvent = function (req, res, next) {
 
   // const { type , event , createProfileEvent } = req.body;

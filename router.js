@@ -21,7 +21,7 @@ module.exports = function(app){
 	app.get('/default_values', RatingData.default_values);
 
 	//EVENTS
-	app.post('/getEvents', Events.getEvents);
+	app.get('/getEvents', Events.getEvents);
 	app.post('/addEvent', Events.addEvent);
 	app.get('/getEvent/:id', Events.getEventById);
 	app.post('/updateEvent/:id', Events.updateEvent);
@@ -30,7 +30,7 @@ module.exports = function(app){
 	app.post('/leaveEvent/:id', Events.leaveEvent);
 	app.post('/joinEvent/:id', Events.joinEvent);
 	app.get('/getEventByTitle', Events.getEventByTitle);
-
+	app.get('/getEventsArround', Events.getEventsArround);
 
 	//PRIVATE EVENTS
 	app.post('/addPrivateEvent' ,PrivateEvents.addPrivateEvent);

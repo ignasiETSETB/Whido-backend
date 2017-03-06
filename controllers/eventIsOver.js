@@ -2,7 +2,7 @@ const jwt = require('jwt-simple');
 const firebase = require('firebase');
 const index = require('../services/index');
 const db = index.db;
-const events = db.child('events');
+//const events = db.child('events');
 const isGroup = require('./isGroup');
 const ModuleEventToGroup = require('./eventToGroup');
 
