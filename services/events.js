@@ -19,7 +19,7 @@ var admin = require("firebase-admin");
 
 exports.getEventsArround = function (req, res, next) {
 
-	var params = req.query;
+  var params = req.query;
   var latitude = params.latitude;
   var longitude = params.longitude;
   var searchingDistance = params.distance;
@@ -55,10 +55,22 @@ ref.on("child_added", function(snapshot, prevChildKey) {
 }, function (errorObject) {
   console.log("The read failed: " + errorObject.code);
 });
-res.json(eventsList);
+function wait() {
+	if(eventsList.length == 0) {
+		setTimeout(function() {
+			wait();
+		},1000);
+	} else {
+		res.json(eventsList);
 
+	}
+}
+wait();
 
 };
+
+
+
 exports.addEvent = function (req, res, next) {
 
   // const { type , event , createProfileEvent } = req.body;
@@ -199,3 +211,7 @@ exports.getEventByTitle = function (req, res, next) {
 			res.json(event);
 		});
 };
+
+function sleep (time) {
+  return new Promise((resolve) => setTimeout(resolve, time));
+}

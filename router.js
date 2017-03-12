@@ -39,7 +39,7 @@ module.exports = function(app){
 
 	//USERS
 	app.get('/getUsers' ,Users.getUsers);
-	app.post('/addUser', Users.addUser);
+	app.get('/addUser', Users.addUser);
 	app.get('/getUser/:id', Users.getUserByID);
 	app.post('/updateUser/:id', Users.updateUser);
 	app.post('/removeUser/:id', Users.removeUser);

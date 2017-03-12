@@ -8,41 +8,57 @@ const db = index.db;
 const ModuleUsers = require('../controllers/getEventsOfUser');
 const ModuleValidate = require('../controllers/validate');
 const requestify = require('requestify');
-
+var admin = require("firebase-admin");
 
 //req: to get dates from client
 //res: to give dates to client
 
 exports.getUsers = function(req, res, next) {
+	console.log('hola')
+	var db = admin.database();
+	var ref = db.ref("newUsers");
+	var usersList = []
+	ref.on("child_added", function(snapshot, prevChildKey) {
+		
+		usersList.push(snapshot.val());
 
-	requestify.get('https://whido-api.firebaseio.com/users.json').then(function(response) {
-		res.json(response.getBody());
+	}, function (errorObject) {
+	console.log("The read failed: " + errorObject.code);
 	});
+	function wait() {
+		if(usersList.length == 0) {
+			setTimeout(function() {
+				wait();
+			},1000);
+		} else {
+			res.json(usersList);
+
+		}
+	}
+	wait();
 };
 
 exports.addUser = function(req, res, next) {
-
-  	const idUser = req.body.id;
-		const user = req.body; // QUITAR LA ID DEL BODY?
-		let msg = "";
-
-		if(idUser){
-			ModuleValidate.validateUser(idUser,(exists)=>{
-				if(!exists){
-					users.child(idUser).update(user);
-					msg = ("USER ADDED");
-				}else{
-					msg = null;
-					console.log("The user with id "+idUser+" already exists. You can not add it again");
-				}
-			});
-
-		}else{
-			msg = null;
-			console.log("The user does not have an id");
-		}
-
-		res.json(msg);
+	//http://10.192.100.42:3090/addUser?username=Ignasi&password=1234567&latitude=4.5643&longitude=3.32134
+	var params = req.query;
+	var user = {};
+	if(params.username)
+	user["username"]=params.username;
+	if(params.password)
+	user["password"]=params.password;
+	if(params.latitude)
+	user["latitude"]=params.latitude;
+	if(params.longitude)
+	user["longitude"]=params.longitude;
+	if(params.id)
+	user["id"]=params.id;
+	
+	var userObject = {};
+	userObject[params.username] = user;
+	var db = admin.database();
+	var ref = db.ref("newUsers");
+	ref.child(params.username).set(user);
+	res.json('Added ' + params.username + ' correctly')
 };
 
 exports.updateUser = function(req, res, next) {
